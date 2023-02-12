@@ -6,7 +6,7 @@
 /*   By: anmande <anmande@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 16:37:58 by anmande           #+#    #+#             */
-/*   Updated: 2023/02/11 21:05:24 by anmande          ###   ########.fr       */
+/*   Updated: 2023/02/12 14:44:39 by anmande          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	lens1;
 	size_t	lens2;
 
-	// if (!s1)
-	// 	return (NULL);
 	lens1 = ft_strlen(s1);
 	lens2 = ft_strlen(s2);
 	s = ft_calloc(sizeof(char), (lens1 + lens2) + 1);

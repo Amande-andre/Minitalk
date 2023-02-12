@@ -6,7 +6,7 @@
 #    By: anmande <anmande@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/18 16:47:31 by anmande           #+#    #+#              #
-#    Updated: 2023/02/12 11:46:16 by anmande          ###   ########.fr        #
+#    Updated: 2023/02/12 14:38:44 by anmande          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,17 +14,17 @@ CLIENT		= ./client/client
 
 SERVER		= ./server/server
 
-B_CLIENT		= ./bonus/bonus_client/bonus_client 
+B_CLIENT	= ./b_client/bonus_client 
 
-B_SERVER		= ./bonus/bonus_server/bonus_server 
+B_SERVER	= ./b_server/bonus_server 
 
 LIBDIR		= libft/libft.a
 
 LIBDIRP		= ./libft		
 
-B_SRC_CLIENT = ./bonus/bonus_client
+B_SRC_CLIENT = ./b_client/client.c
 
-B_SRC_SERVER = ./bonus/bonus_server
+B_SRC_SERVER = ./b_server/server.c
 
 SRC_CLIENT	= ./client/client.c \
 
@@ -34,41 +34,39 @@ OBJ_SERVER	= $(SRC_SERVER:.c=.o)
 
 OBJ_CLIENT	= $(SRC_CLIENT:.c=.o)
 
-B_OBJ_SERVER	= $(B_SRC_SERVER:.c=.o)
+B_OBJ_SERVER = $(B_SRC_SERVER:.c=.o)
 
-B_OBJ_CLIENT	= $(B_SRC_CLIENT:.c=.o)
+B_OBJ_CLIENT = $(B_SRC_CLIENT:.c=.o)
 
-CC			= gcc
+CC			= cc
 
-CFLAGS		+= -Wall -Wextra -I./include/
+CFLAGS		= -Wall -Wextra -Wextra -I./include/
 
 RM			= rm -f
 
 all:		$(CLIENT) $(SERVER)
 
 $(SERVER):	$(OBJ_SERVER) $(LIBDIR)
-#		make -s -C $(LIBDIR)
 		$(CC) -o $(SERVER) $(OBJ_SERVER) $(LIBDIR)
 
 $(CLIENT):	$(OBJ_CLIENT) $(LIBDIR)
 		$(CC) -o $(CLIENT) $(OBJ_CLIENT) $(LIBDIR)
 
-$(B_SERVER):	$(B_OBJ_SERVER) $(LIBDIR)
-		make -s -C $(LIBDIR)
+$(B_SERVER): $(B_OBJ_SERVER) $(LIBDIR)
 		$(CC) -o $(B_SERVER) $(B_OBJ_SERVER) $(LIBDIR)
 
-$(B_CLIENT):	$(B_OBJ_CLIENT) $(LIBDIR)
+$(B_CLIENT): $(B_OBJ_CLIENT) $(LIBDIR)
 		$(CC) -o $(B_CLIENT) $(B_OBJ_CLIENT) $(LIBDIR)
 
-bonus:	$(B_CLIENT) $(B_SERVER)
+bonus:	$(B_SERVER) $(B_CLIENT) 
 
 clean:
 		$(RM) $(OBJ_SERVER) $(OBJ_CLIENT) 
 		make clean -s -C $(LIBDIRP)
 
 fclean:		clean
-		$(RM) $(SERVER) $(CLIENT) $(B_CLIENT) $(B_CLIENT)
+		$(RM) $(SERVER) $(CLIENT) $(B_SERVER) $(B_CLIENT)
 
 re:		fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus
