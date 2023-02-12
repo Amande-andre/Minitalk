@@ -6,7 +6,7 @@
 /*   By: anmande <anmande@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 10:22:39 by anmande           #+#    #+#             */
-/*   Updated: 2023/02/11 21:07:09 by anmande          ###   ########.fr       */
+/*   Updated: 2023/02/12 15:09:40 by anmande          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,15 @@ void	ft_bin(int pid, char *str)
 	{
 		while (c < 8)
 		{
-			nb = (str[i] >> c++) & 1;
-			usleep(100);
-			ft_sig(pid, nb);
+			if (g_char == true)
+			{
+				nb = (str[i] >> c++) & 1;
+				ft_sig(pid, nb);
+				//usleep(100);
+			}
 		}
 		c = 0;
+		g_char = false;
 		i++;
 	}
 }
