@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anmande <anmande@student.42.fr>            +#+  +:+       +#+        */
+/*   By: j <j@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 10:17:53 by anmande           #+#    #+#             */
-/*   Updated: 2023/02/12 15:15:06 by anmande          ###   ########.fr       */
+/*   Updated: 2023/02/15 15:45:02 by j                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,26 @@ void	con_bit(int sig)
 	static unsigned char	c = 0;
 	static int				i = 0;
 	static int				j = 0;
-	char	*str;
+	static char	str[600000];
 
-	str = malloc(65000);
+	//*str = NULL;
 	c |= (sig << i++);
 	if (i > 7)
 	{
 		if (c == '\0')
 		{
-			ft_putchar_fd(c, 1);
+			//ft_putchar_fd('c', 1);
+			str[j] = '\0';
+			ft_putstr_fd(str, 1);
 			ft_putchar_fd('\n', 1);
+			j = 0;
 		}
 		else
 		{
+			//ft_putchar_fd(c, 1);
 			str[j] = c;
-			// g_char = true;
+			j++;
 		}
-		if (i == 6)
-			g_char = true;
 		i = 0;
 		c = 0;
 	}

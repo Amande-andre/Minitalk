@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anmande <anmande@student.42.fr>            +#+  +:+       +#+        */
+/*   By: j <j@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 10:22:39 by anmande           #+#    #+#             */
-/*   Updated: 2023/02/12 15:09:40 by anmande          ###   ########.fr       */
+/*   Updated: 2023/02/15 15:47:45 by j                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
+#include <stdio.h>
 
 void	ft_sig(int pid, int nb)
 {
@@ -30,20 +31,22 @@ void	ft_bin(int pid, char *str)
 
 	c = 0;
 	i = 0;
-	while (str[i])
+	while (str[i] != '\0')
 	{
 		while (c < 8)
 		{
-			if (g_char == true)
-			{
-				nb = (str[i] >> c++) & 1;
-				ft_sig(pid, nb);
-				//usleep(100);
-			}
+			nb = (str[i] >> c++) & 1;
+			ft_sig(pid, nb);
+			usleep(300);
 		}
 		c = 0;
-		g_char = false;
 		i++;
+	}
+	while (c < 8)
+	{
+		nb = (str[i] >> c++) & 1;
+		ft_sig(pid, nb);
+		usleep(200);
 	}
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minitalk.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anmande <anmande@student.42.fr>            +#+  +:+       +#+        */
+/*   By: j <j@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 10:18:45 by anmande           #+#    #+#             */
-/*   Updated: 2023/02/12 15:12:12 by anmande          ###   ########.fr       */
+/*   Updated: 2023/02/15 12:31:38 by j                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <../libft/libft.h>
 # include <stdbool.h>
 
-bool	g_char = false;
+bool	g_char = true;
 
 void	con_bit(int sig);
 void	ft_sig(int sign, int nb);
