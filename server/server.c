@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: j <j@student.42.fr>                        +#+  +:+       +#+        */
+/*   By: anmande <anmande@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 10:17:53 by anmande           #+#    #+#             */
-/*   Updated: 2023/02/15 15:45:02 by j                ###   ########.fr       */
+/*   Updated: 2023/02/16 18:13:00 by anmande          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,13 @@ void	con_bit(int sig)
 	static unsigned char	c = 0;
 	static int				i = 0;
 	static int				j = 0;
-	static char	str[600000];
+	static char				str[600000];
 
-	//*str = NULL;
 	c |= (sig << i++);
 	if (i > 7)
 	{
 		if (c == '\0')
 		{
-			//ft_putchar_fd('c', 1);
 			str[j] = '\0';
 			ft_putstr_fd(str, 1);
 			ft_putchar_fd('\n', 1);
@@ -34,7 +32,6 @@ void	con_bit(int sig)
 		}
 		else
 		{
-			//ft_putchar_fd(c, 1);
 			str[j] = c;
 			j++;
 		}
@@ -61,8 +58,8 @@ int	main(void)
 	ft_putstr_fd(str, 1);
 	ft_putchar_fd('\n', 1);
 	free(str);
-		if (!str)
-			return (0);
+	if (!str)
+		return (0);
 	if (signal(SIGUSR1, ft_sig_sem) == SIG_ERR)
 		write(1, "SIGUSR1 ERROR\n", 15);
 	if (signal(SIGUSR2, ft_sig_sem) == SIG_ERR)
