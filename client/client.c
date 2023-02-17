@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: j <j@student.42.fr>                        +#+  +:+       +#+        */
+/*   By: anmande <anmande@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 10:22:39 by anmande           #+#    #+#             */
-/*   Updated: 2023/02/15 15:47:45 by j                ###   ########.fr       */
+/*   Updated: 2023/02/17 11:44:19 by anmande          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,16 @@ int	main(int ac, char **av)
 	int	pid;
 
 	if (ac != 3)
+	{
+		ft_putstr_fd("wrong count of arguments", 1);
 		return (0);
+	}
 	pid = ft_atoi(av[1]);
 	if (pid <= 1)
+	{
+		ft_putstr_fd("wrong pid mate", 1);
 		return (0);
+	}
 	ft_bin(pid, av[2]);
 	return (ac);
 }
